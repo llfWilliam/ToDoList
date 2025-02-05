@@ -31,7 +31,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QVector<Task> tasks;
-    void applyStyles();
     void sortTasks();
     void refreshTaskList();
     QString categoryToString(Category category);
