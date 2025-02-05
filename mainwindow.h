@@ -8,6 +8,9 @@
 #include <QComboBox>
 #include <task.h>
 #include <QVector>
+#include <QListWidgetItem>
+#include <QBrush>
+#include <QColor>
 
 
 namespace Ui {
@@ -28,6 +31,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QVector<Task> tasks;
+    void applyStyles();
     void sortTasks();
     void refreshTaskList();
     QString categoryToString(Category category);

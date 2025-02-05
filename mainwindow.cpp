@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // 初始化优先级选择框
 }
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -25,10 +24,24 @@ void MainWindow::refreshTaskList() {
     ui->taskList->clear();  // 清空现有列表
     for (const Task &task : tasks) {
         QString taskDisplay = task.name + " - " + categoryToString(task.category) + " - " + priorityToString(task.priority);
+        QListWidgetItem *item = new QListWidgetItem(taskDisplay);
+
+                // 根据优先级设置背景色
+                switch (task.priority) {
+                    case Priority::High:
+                        item->setData(Qt::BackgroundRole, QColor(Qt::red));  // 高优先级显示红色
+                        break;
+                    case Priority::Medium:
+                        item->setData(Qt::BackgroundRole, QColor(Qt::yellow));  // 中优先级显示黄色
+                        break;
+                    case Priority::Low:
+                        item->setData(Qt::BackgroundRole, QColor(Qt::green));  // 低优先级显示绿色
+                        break;
+                }
+
         ui->taskList->addItem(taskDisplay);  // 将任务添加到列表控件
     }
 }
-
 QString MainWindow::categoryToString(Category category) {
     switch (category) {
         case Category::Work: return "工作";
