@@ -20,7 +20,7 @@ public:
     QString name;
     Category category;
     Priority priority;
-
+    Task() : name(""), category(Category::Work), priority(Priority::Medium) {}
     Task(const QString &name, Category category, Priority priority)
         : name(name), category(category), priority(priority) {}
 

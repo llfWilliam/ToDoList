@@ -7,35 +7,29 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)//-------------------------------------------------------------初始化 ui 对象
 {
     ui->setupUi(this);//-----------------------------------------------------------------设置 UI
-    connect(ui->addButton, SIGNAL(clicked()), this, SLOT(addTask())); //-----------------连接信号和槽，当addButton发出了click信号以后执行槽函数addtask
+    connect(ui->addButton, SIGNAL(clicked()), this, SLOT(onButtonAddPressed())); //-----------------连接信号和槽，当addButton发出了click信号以后执行槽函数addtask
     connect(ui->deleteButton, SIGNAL(clicked()), this, SLOT(deleteTask()));//------------同上
-    ui->categoryComboBox->addItem("工作");
-    ui->categoryComboBox->addItem("个人");
-    ui->categoryComboBox->addItem("学习");
 
     // 初始化优先级选择框
-    ui->priorityComboBox->addItem("高");
-    ui->priorityComboBox->addItem("中");
-    ui->priorityComboBox->addItem("低");
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-void sortTasks() {
+void MainWindow::sortTasks() {
     std::sort(tasks.begin(), tasks.end());  // 根据优先级排序
 }
 
-void refreshTaskList() {
-    ui->taskListWidget->clear();  // 清空现有列表
+void MainWindow::refreshTaskList() {
+    ui->taskList->clear();  // 清空现有列表
     for (const Task &task : tasks) {
         QString taskDisplay = task.name + " - " + categoryToString(task.category) + " - " + priorityToString(task.priority);
-        ui->taskListWidget->addItem(taskDisplay);  // 将任务添加到列表控件
+        ui->taskList->addItem(taskDisplay);  // 将任务添加到列表控件
     }
 }
 
-QString categoryToString(Category category) {
+QString MainWindow::categoryToString(Category category) {
     switch (category) {
         case Category::Work: return "工作";
         case Category::Personal: return "个人";
@@ -44,7 +38,7 @@ QString categoryToString(Category category) {
     return "";
 }
 
-QString priorityToString(Priority priority) {
+QString MainWindow::priorityToString(Priority priority) {
     switch (priority) {
         case Priority::High: return "高";
         case Priority::Medium: return "中";
@@ -53,7 +47,7 @@ QString priorityToString(Priority priority) {
     return "";
 }
 
-void onButtonAddPressed() {
+void MainWindow::onButtonAddPressed() {
     QString taskName = ui->taskInput->text().trimmed();
     if (taskName.isEmpty()) {
         return;  // 如果任务名称为空，直接返回
