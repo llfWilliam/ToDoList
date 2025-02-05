@@ -6,47 +6,115 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>456</width>
-    <height>372</height>
+    <width>573</width>
+    <height>329</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>375</width>
-      <height>231</height>
+      <x>32</x>
+      <y>22</y>
+      <width>500</width>
+      <height>233</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLineEdit" name="taskInput"/>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLineEdit" name="taskInput"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addButton">
+           <property name="text">
+            <string>新建</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deleteButton">
+           <property name="text">
+            <string>删除</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="addButton">
-         <property name="text">
-          <string>新建</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="deleteButton">
-         <property name="text">
-          <string>删除</string>
-         </property>
-        </widget>
+        <widget class="QListWidget" name="taskList"/>
        </item>
       </layout>
      </item>
      <item>
-      <widget class="QListWidget" name="taskList"/>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>优先级：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="priorityComboBox">
+           <item>
+            <property name="text">
+             <string>高</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>中</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>低</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>种类：</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="categoryComboBox">
+           <item>
+            <property name="text">
+             <string>工作</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>个人</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>学习</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
@@ -56,7 +124,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>456</width>
+     <width>573</width>
      <height>26</height>
     </rect>
    </property>

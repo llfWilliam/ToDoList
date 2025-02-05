@@ -5,6 +5,10 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QMessageBox>
+#include <QComboBox>
+#include <task.h>
+#include <QVector>
+
 
 namespace Ui {
 class MainWindow;
@@ -20,8 +24,16 @@ public:
 private slots:
     void addTask();
     void deleteTask();
+    void onButtonAddPressed();
+
 private:
     Ui::MainWindow *ui;
+    QVector<Task> tasks;
+    void sortTasks();
+    void refreshTaskList();
+    QString categoryToString(Category category);
+    QString priorityToString(Priority priority);
 };
+
 
 #endif // MAINWINDOW_H
