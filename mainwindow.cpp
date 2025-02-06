@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)//-------------------------------------------------------------初始化 ui 对象
 {
     ui->setupUi(this);//-----------------------------------------------------------------设置 UI
-    connect(ui->addButton, SIGNAL(clicked()), this, SLOT(onButtonAddPressed())); //-----------------连接信号和槽，当addButton发出了click信号以后执行槽函数addtask
+    connect(ui->addButton, SIGNAL(clicked()), this, SLOT(onButtonAddPressed())); //------连接信号和槽，当addButton发出了click信号以后执行槽函数addtask
     connect(ui->deleteButton, SIGNAL(clicked()), this, SLOT(deleteTask()));//------------同上
 
     // 初始化优先级选择框
@@ -24,6 +24,7 @@ void MainWindow::refreshTaskList() {
         ui->taskList->addItem(item);
     }
 }
+
 
 void MainWindow::sortTasks() {
     std::sort(tasks.begin(), tasks.end());  // 根据优先级排序
@@ -71,11 +72,11 @@ void MainWindow::onButtonAddPressed() {
     sortTasks();
     refreshTaskList();
 }
-void MainWindow::deleteTask()//----------------------------------------------------------构造删除任务函数
-{
-    QListWidgetItem *item = ui->taskList->currentItem();
-    if (item) {
-        delete item;
+void MainWindow::deleteTask() {
+    int row = ui->taskList->currentRow(); // 获取当前选中的行号
+    if (row >= 0) { // 确保有选中的项
+        tasks.removeAt(row); // 从 QVector<Task> 中移除对应任务
+        delete ui->taskList->takeItem(row); // 删除 QListWidgetItem
     } else {
         QMessageBox::warning(this, "警告", "请选择一个事项来进行删除。");
     }

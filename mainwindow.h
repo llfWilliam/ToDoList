@@ -11,6 +11,7 @@
 #include <QListWidgetItem>
 #include <QBrush>
 #include <QColor>
+#include <qnamespace.h>//
 
 
 namespace Ui {
